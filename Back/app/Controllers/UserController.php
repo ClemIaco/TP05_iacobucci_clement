@@ -51,9 +51,12 @@ class UserController {
     {
         $user = $request->getParsedBody();
         $result = [
+            $user
+        ];
+        /*$result = [
             "success" => true,
             "user" => $user
-        ];
+        ];*/
 
         $response->getBody()->write(json_encode($result));
         return $response->withHeader("Content-Type", "application/json");
