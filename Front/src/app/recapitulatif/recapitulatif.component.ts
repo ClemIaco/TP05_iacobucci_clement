@@ -1,19 +1,20 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Client } from '../models/client';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-recapitulatif',
   templateUrl: './recapitulatif.component.html',
   styleUrls: ['./recapitulatif.component.css']
 })
-export class RecapitulatifComponent {
+export class RecapitulatifComponent implements OnInit{
 
   constructor() { }
 
-  @Input() client: Client;
+  @Input() client$: Observable<Client>;
 
-  test(){
-    console.log(this.client.name);
+  ngOnInit(): void {
+    this.client$.subscribe(res => console.log(res));
   }
   
 }

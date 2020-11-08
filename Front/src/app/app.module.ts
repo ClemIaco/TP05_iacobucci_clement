@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule} from './app-routing.module';
 import { ProductState } from '../shared/states/product-state'
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { TetiereComponent } from './tetiere/tetiere.component';
@@ -10,6 +11,8 @@ import { FooterComponent } from './footer/footer.component';
 import { NgxsModule } from '@ngxs/store';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { HomeComponent } from './home/home.component';
     ReactiveFormsModule,
     AppRoutingModule,
     NgxsModule.forRoot([ProductState]),
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

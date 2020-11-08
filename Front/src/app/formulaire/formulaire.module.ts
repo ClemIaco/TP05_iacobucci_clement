@@ -12,7 +12,7 @@ import { EmailPatternDirective } from '../directives/email-pattern.directive';
 import { CountryPatternDirective } from '../directives/country-pattern.directive';
 import { FormulaireComponent } from './formulaire.component';
 import { RecapitulatifComponent } from '../recapitulatif/recapitulatif.component';
-
+import { ApiService } from '../services/api.service';
 
 
 @NgModule({
@@ -33,6 +33,9 @@ import { RecapitulatifComponent } from '../recapitulatif/recapitulatif.component
     FormsModule,
     ReactiveFormsModule,
     FormulaireRoutingModule
+  ],
+  providers: [
+    ApiService
   ]
 })
 export class FormulaireModule { }

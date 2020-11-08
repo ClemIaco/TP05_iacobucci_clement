@@ -1,0 +1,26 @@
+<h2 id="titlePage">Formulaire d'authentification</h2>
+
+<div class="container">
+    <form id="authForm" class="form-example" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+
+        <!-- LOGIN -->
+        <div class="form-group">
+        <label for="name">Nom d'utilisateur : <span style="color:red">*</span> </label>
+        <input type="text" class="form-control" formControlName="name" placeholder="Votre nom d'utilisateur...">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)">
+            <span class="text-danger" *ngIf="name.errors.required">    
+                Le champ Nom d'utilisateur est requis
+            </span>
+        </div> 
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+        <label for="firstname">Mot de passe : <span style="color:red">*</span> </label>
+        <input type="text" class="form-control" formControlName="password" placeholder="Votre mot de passe...">
+        <span class="text-danger" *ngIf="(password.touched || password.dirty) && password.errors.required">    
+            Le champ Mot de passe est requis   
+        </span>
+        </div><button id="btnSubmit" type="submit" class="btn btn-success">Valider</button>
+    </form>
+</div>

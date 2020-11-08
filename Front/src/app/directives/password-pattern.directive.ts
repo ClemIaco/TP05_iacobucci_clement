@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';    
 import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';    
-import { CustomvalidationsService } from '../services/custom-validations.service';    
+import { CustomFormValidationsService } from '../services/custom-form-validations.service';    
     
 @Directive({    
   selector: '[appPasswordPattern]',    
@@ -8,7 +8,7 @@ import { CustomvalidationsService } from '../services/custom-validations.service
 })    
 export class PasswordPatternDirective implements Validator {    
     
-  constructor(private customValidator: CustomvalidationsService) { }    
+  constructor(private customValidator: CustomFormValidationsService) { }    
     
   validate(control: AbstractControl): { [key: string]: any } | null {    
     return this.customValidator.patternValidator()(control);    

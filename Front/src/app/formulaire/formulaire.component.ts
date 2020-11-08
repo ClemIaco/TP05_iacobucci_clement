@@ -3,6 +3,8 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { lettersOnlyValidator, numbersOnlyValidator, postalCodeValidator, emailValidator, matchPasswordValidator } from '../validators'
 import { Client } from '../models/client'
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-formulaire',
@@ -12,9 +14,10 @@ import { Router } from '@angular/router';
 export class FormulaireComponent {
   
   formOk: Boolean = false;
-  public client: Client;
+  //public client: Client;
+  client$: Observable<Client>;
   
-  constructor(private router: Router) {}
+  constructor(private router: Router, private apiService: ApiService) {}
   
   public civility: string[] = ['Madame', 'Monsieur'];
   
@@ -63,13 +66,17 @@ export class FormulaireComponent {
       this.customerForm.value.password
     );
 
+
     if (this.customerForm.valid)
     {
       this.formOk = true;
-      this.router.navigate(['/products']);
+      console.log(client.firstname);
+      this.client$ = this.apiService.sendCustomerInfos(client);
+      this.client$.subscribe(res => console.log(res));
+      //this.router.navigate(['/recap']);
     }
 
-    this.client = client;
+    //this.client$ = client;
+    
   }
-
 }

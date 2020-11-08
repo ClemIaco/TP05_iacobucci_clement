@@ -1,6 +1,6 @@
 import { Directive, Input } from '@angular/core';
 import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';   
-import { CustomvalidationsService } from '../services/custom-validations.service';  
+import { CustomFormValidationsService } from '../services/custom-form-validations.service';  
 
 @Directive({
   selector: '[appCountryPattern]',    
@@ -10,7 +10,7 @@ export class CountryPatternDirective implements Validator {
 
   @Input('appCountryPattern') CountryValidator: string;  
     
-  constructor(private customValidator: CustomvalidationsService) { }    
+  constructor(private customValidator: CustomFormValidationsService) { }    
     
   validate(control: AbstractControl): { [key: string]: any } | null {    
     return this.customValidator.CountryValidator(this.CountryValidator)(control);    
