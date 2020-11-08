@@ -11,7 +11,7 @@ export class RecapitulatifComponent implements OnInit{
 
   constructor() { }
 
-  @Input() client$: Observable<Client>;
+  @Input() public client$: Observable<Client>;
 
   ngOnInit(): void {
     this.client$.subscribe(res => console.log(res));
