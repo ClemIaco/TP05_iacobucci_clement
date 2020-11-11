@@ -11,7 +11,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  public token_jwt: any;
+  public token_jwt: string;
 
   public getProducts() : Observable<Product[]> {
     return this.http.get<Product[]>(environment.productsAPI);
@@ -19,10 +19,6 @@ export class ApiService {
 
   public getProductById(id: number) : Observable<Product> {
     return this.getProducts().pipe(map(product => product.find(product => product.id == id)));
-  }
-
-  public getTokenJWT(): any {
-    return this.token_jwt;
   }
 
   public sendCustomerInfos(client: Client) : Observable<Client> {
