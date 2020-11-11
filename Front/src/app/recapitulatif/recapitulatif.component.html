@@ -1,5 +1,5 @@
 <h2>Récapitulatif des informations client</h2>
-<div class="card col-sm-2" style="width: 20rem;" *ngIf="client$ | async as client">
+<div class="card col-sm-2" style="width: 20rem;" *ngIf="(client$ | async) as client">
     <p>Civilité : {{client.civility}}</p>
     <p>Nom : {{client.name}}</p>
     <p>Prénom : {{client.firstname}}</p>

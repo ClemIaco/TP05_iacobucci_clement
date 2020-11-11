@@ -70,10 +70,9 @@ export class FormulaireComponent {
     if (this.customerForm.valid)
     {
       this.formOk = true;
-      this.client$ = this.apiService.sendCustomerInfos(client);
       //this.router.navigate(['/recap']);
     }
-
+    this.client$ = this.apiService.sendCustomerInfos(client);
     //this.client$ = client;
     
   }

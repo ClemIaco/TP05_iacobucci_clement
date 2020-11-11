@@ -5,10 +5,10 @@
 
         <!-- LOGIN -->
         <div class="form-group">
-        <label for="name">Nom d'utilisateur : <span style="color:red">*</span> </label>
-        <input type="text" class="form-control" formControlName="name" placeholder="Votre nom d'utilisateur...">
-        <div *ngIf="name.invalid && (name.dirty || name.touched)">
-            <span class="text-danger" *ngIf="name.errors.required">    
+        <label for="login">Nom d'utilisateur : <span style="color:red">*</span> </label>
+        <input type="text" class="form-control" formControlName="login" placeholder="Votre nom d'utilisateur...">
+        <div *ngIf="login.invalid && (login.dirty || login.touched)">
+            <span class="text-danger" *ngIf="login.errors.required">    
                 Le champ Nom d'utilisateur est requis
             </span>
         </div> 
@@ -18,9 +18,12 @@
         <div class="form-group">
         <label for="firstname">Mot de passe : <span style="color:red">*</span> </label>
         <input type="text" class="form-control" formControlName="password" placeholder="Votre mot de passe...">
-        <span class="text-danger" *ngIf="(password.touched || password.dirty) && password.errors.required">    
+        <span class="text-danger" *ngIf="password.invalid && (password.touched || password.dirty) && password.errors.required">    
             Le champ Mot de passe est requis   
         </span>
+
+        <div>Voici les identifiants pour se connecter : Nom d'utilisateur : clement  Mot de passe : mdp</div>
+        <div *ngIf="isAuthenticated === true">Vous êtes authentifié et voici le token JWT : {{ token_JWT }}</div>
         </div><button id="btnSubmit" type="submit" class="btn btn-success">Valider</button>
     </form>
 </div>

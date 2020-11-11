@@ -10,7 +10,6 @@ $dotenv->load();
 $app = AppFactory::create();
 $app->addBodyParsingMiddleware();
 
-
 $routes = require __DIR__ . '/../router.php';
 $routes($app);
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { ApiService } from '../services/api.service';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
@@ -8,21 +10,32 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 })
 export class AuthenticationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private apiService: ApiService) { }
+
+  isAuthenticated: boolean = false;
+  token_JWT: string;
 
   authForm: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.required]),
+    login: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   })
 
-  get name(): AbstractControl { return this.authForm.get('name'); }
+  get login(): AbstractControl { return this.authForm.get('login'); }
   get password(): AbstractControl { return this.authForm.get('password'); }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-    console.log("ok");
-  }
 
+    this.apiService.authenticate(this.authForm.value.login, this.authForm.value.password).subscribe(res => { 
+      if (res.body.success)
+      {
+          this.isAuthenticated = true;
+          this.token_JWT = res.headers.get("authorization");
+          console.log(this.token_JWT);
+          //this.router.navigate(['/products']);
+      }
+    });
+  }
 }

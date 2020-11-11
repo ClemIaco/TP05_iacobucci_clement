@@ -38,8 +38,8 @@ class UserController {
             "success" => true,
             "user" => [
                 "id" =>  $_ENV["ADMIN_ID"],
-                "login" => $_ENV["ADMIN_LOGIN"],
-                "email" =>  $_ENV["ADMIN_EMAIL"],
+                "login" => $_ENV["ADMIN_LOGIN"]
+                
             ]
         ]));
         return $response
@@ -50,13 +50,12 @@ class UserController {
     public function register(Request $request, Response $response, array $args): Response
     {
         $user = $request->getParsedBody();
+        //$user = json_decode($user["client"], true);
+  
         $result = [
-            $user
-        ];
-        /*$result = [
             "success" => true,
             "user" => $user
-        ];*/
+        ];
 
         $response->getBody()->write(json_encode($result));
         return $response->withHeader("Content-Type", "application/json");
