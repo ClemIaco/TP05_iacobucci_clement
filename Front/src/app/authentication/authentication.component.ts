@@ -36,6 +36,11 @@ export class AuthenticationComponent implements OnInit {
           console.log(this.token_JWT);
           //this.router.navigate(['/products']);
       }
+      else {
+        this.authForm.setErrors({
+          loginOrPasswordInvalid: true
+        });
+      }
     });
   }
 }
